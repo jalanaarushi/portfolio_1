@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Dr.Prabhu Jayagopal
+    </title>
+    
+</head>
+<script src="https://unpkg.com/@themeswitcher/core@1.0.1/dist/themeswitcher.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+document.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.classList.contains('read-more-btn')) {
+            const parent = target.parentNode;
+            const content = parent.querySelector('.read-more-text');
+            
+            // Toggle the visibility of the content
+            content.classList.toggle('read-more-text--show');
+            
+            // Update button text
+            target.textContent = content.classList.contains('read-more-text--show') 
+                ? 'Read Less...' 
+                : 'Read More...';
+        }
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+    // Smooth scrolling for both main navbar and sidebar
+    const navLinks = document.querySelectorAll('.navlinks a, .sidebar a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            window.scrollTo({
+                top: targetSection.offsetTop - 80, // Adjust for fixed navbar height
+                behavior: 'smooth'
+            });
+
+            // Close the sidebar after clicking a link (optional)
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.remove('visible');
+                sidebar.style.display = 'none';
+            }
+        });
+    });
+
+    document.addEventListener('scroll', function () {
+        const sections = document.querySelectorAll('section'); // Adjust this if sections are <div> instead
+        const navList = document.querySelectorAll('nav ul li a, .sidebar a');
+        let currentSectionId = null;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 80; // Adjust for fixed navbar height
+            const sectionHeight = section.offsetHeight;
+            const scrollPosition = window.scrollY;
+
+            // Check if the section is currently visible in the viewport
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        // Mark the link corresponding to the current section as active
+        navList.forEach(link => {
+            link.classList.remove('active');
+            if (currentSectionId && link.getAttribute('href').includes(currentSectionId)) {
+                link.classList.add('active');
+            }
+        });
+    });
+});
+
+
+
+const loadhome= document.getElementsByClassName('logo');
+loadhome.onclick()
+
+function showSidebar(){
+            const sidebar=document.querySelector('.sidebar')
+            sidebar.style.display='flex'
+}
+
+function hideSidebar(){
+            const sidebar=document.querySelector('.sidebar')
+            sidebar.style.display='none'
+}
+
+ // script.js
+
+
+const pcontainer = document.querySelector('.read');
+pcontainer.addEventListener('click', event => {
+    const current = event.target;
+    const isReadMoreBtn = current.classList.contains('read-more-btn');
+    if (!isReadMoreBtn) return;
+
+    const currentText = event.target.parentNode.querySelector('.read-more-text');
+    currentText.classList.toggle('read-more-text--show');
+    
+    current.textContent = current.textContent.includes('Read More') ? "Read Less..." : "Read More...";
+});
+function triggerbtnclick(){
+    document.getElementById('a1').click();
+}
+
+
+ 
+
+
+    </script>
+    
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-family: "Roboto", serif;
+}
+
+body {
+    margin-top: 80px;
+    font-size: 14px;
+    color: #000;
+    background-color: #e6e6ef;
+} 
+
+
+
+.portfolio {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 20px;
+    padding: 10px;
+} 
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #0056b3;
+    margin-right: 20px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navlinks  {
+    padding-top: 10px;
+    display: flex;
+    gap: 15px;
+}
+
+.navlinks li {
+    font-size: 1.1rem;
+    list-style: none;
+}
+
+.navlinks a {
+    text-decoration: none;
+    color: #0056b3;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.navlinks a:hover {
+    background-color: rgba(0, 86, 179, 0.1);
+    color: #0056b3;
+}
+nav ul li a:active{
+    color:white;
+    background-color: rgba(0, 0, 255, 0.689); 
+}
+/* styles.css */
+
+
+
+
+/* Navbar Styling */
+.navlinks {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar  {
+    display: flex;
+    gap: 15px;
+}
+
+.sidebar li {
+    list-style: none;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.sidebar a:hover {
+    color: #fff;
+    background-color: #0056b3;
+}
+
+.portfolio {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 20px;
+    padding: 10px;
+} 
+h1 {
+    font-size: 1.7rem;
+    color: #0056b3;
+    margin-bottom: 0.7rem;
+}
+
+
+.section-header {
+    display: flex;
+    align-items: start;
+    justify-content: flex-end;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+.section-content {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* justify-content: center; */
+    /* align-items: start; */
+    text-align: justify;
+    /* font-size: .9rem; */
+}
+
+.section-content p, .section-content ul {
+    margin-top: 10px;
+    color: #000000;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.section-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.section-content a {
+    color: #0056b3;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.section-content a:hover {
+    color: #003d7a;
+}
+
+.main{
+padding-left:20px ;
+border-radius: 50%;
+height: 250px;
+width:250px
+}
+
+.abt{
+    padding-top: 0;
+    padding-left: 70px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+    word-spacing: 1.5;
+    line-height: 3.1rem;
+    font-weight: 300;
+}
+
+.abt1{
+    padding-top: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 1.6;
+}
+
+.abt1 a{
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.icon{
+    padding-top: 10px;
+}
+
+.icon li{
+    display:flex;
+    align-items: center;
+    list-style: none;
+    display: inline-block;
+    padding-right:10px ; 
+    
+}
+
+.icon ul{
+    display: flex;
+    align-items: center; 
+    
+}
+
+.icon a{
+    transition: color 0.3s, box-shadow 0.3s;
+   
+}
+
+.icon a:hover{
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.279) ; 
+    border-radius: 50%;
+    box-shadow: 0.7px 4px 1px  #668ab08b;
+    
+
+}
+.class_increase
+{
+    font-size: 1.3rem;
+}
+
+nav .sidebar{
+    position: fixed;
+    top:0;
+    right:0;
+    height:100vh;
+    width:250px;
+    z-index: 999;
+    background-color: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    box-shadow:-10px 0 10px rgb(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.navlinks a.active {
+    color: white;
+    background-color: rgba(0, 0, 255, 0.689);
+}
+
+
+
+.menu{
+    display:none;
+}  
+@media screen and (max-width:800px) {
+
+    .hideOnMobile{
+        display:none;
+    }   
+
+    .menu{
+    display:block;
+    padding-bottom: 20px;
+}
+.portfolio {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .section-title, .section-content {
+        width: 100%;
+        grid-column: 1 / -1; /* Forces full width */
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-content {
+        padding: 20px;
+        margin: 15px 10px;
+        font-size: 15px;
+    }
+    .section-content p {
+        line-height: 1.6;
+        text-align: left; /* Changed from justify for better mobile readability */
+        word-spacing: normal;
+        padding: 0 5px;
+    }
+
+    /* Specific styling for the patent section */
+    #patent.section-title {
+        margin-bottom: 0.5rem;
+    }
+
+    #patent + .section-content {
+        margin-top: 0;
+    }
+
+    /* For the books section that has its own grid */
+    .section-content[style*="grid"] {
+        display: block !important; /* Override the grid display */
+    }
+
+    .section-content[style*="grid"] img {
+        display: none; /* Hide the book image */
+    }
+
+    .section-content[style*="grid"] p {
+        width: 100%; /* Make text take full width */
+        padding: 5px 15px 5px 15px;
+        text-align: left;
+    }
+
+    /* Ensure proper spacing between sections */
+    .section-title + .section-content {
+        margin-top: 0;
+    }
+
+    .section-title {
+        text-align: center;  /* Center the headings on mobile */
+        padding: 10px 0;
+    }
+
+    .section-content {
+        margin: 0 10px;  /* Add some margin on the sides */
+    }
+
+    .abt {
+        padding-left: 20px;
+        font-size: 18px;
+        line-height: 40px;
+    }
+
+    .main {
+        display: block;
+        margin: 0 auto;  /* Center the profile image */
+    }
+    .journals-container {
+                        width: 100vw;  /* Use viewport width */
+                        padding: 10px;
+                        margin: 0;
+                    }
+
+                    .journals-grid {
+                        display: block;  /* Change to block display */
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .journal-item {
+                        width: 100%;
+                        margin: 0 0 15px 0;
+                    }
+
+                    .section {
+                        width: 100%;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+}
+
+@media (max-width:200px) {
+
+.sidebar{
+    width:100%;
+}
+
+
+}
+
+.read-more-btn {
+    color: #0056b3;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.read-more-btn:hover {
+    color: #003d7a; 
+}
+
+.read-more-text{
+                display:none;
+            }
+            .read-more-text--show{
+                display:inline;
+            }
+            .journals-container {
+                    padding: 20px;
+                    width: 100%;
+                }
+
+                .year-filters {
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
+
+                .year-btn {
+                    padding: 8px 16px;
+                    margin: 0 5px;
+                    border: none;
+                    border-radius: 20px;
+                    background-color: #f0f0f0;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                .year-btn.active {
+                    background-color: #007bff;
+                    color: white;
+                }
+
+                /* Regular styles remain the same for desktop */
+                .journals-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                    gap: 24px;
+                    padding: 0 20px;
+                }
+
+                .journal-item {
+                    background: white;
+                    padding: 15px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                    transition: transform 0.3s ease, opacity 0.3s ease;
+                }
+
+                .journal-item:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                }
+
+                .journal-item.hidden {
+                    display: none;
+                    opacity: 0;
+                }
+
+                .journal-item a {
+                    color: #333;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+
+                .journal-item .authors {
+                    font-size: 0.9em;
+                    color: #666;
+                    margin: 8px 0;
+                }
+
+                .journal-item .year {
+                    color: #007bff;
+                    font-weight: bold;
+                }
+
+                /* Animation classes */
+                .fade-in {
+                    animation: fadeIn 0.5s ease-in;
+                }
+
+                
+
+
+/* Update these class names to be specific to journals */
+.journals-hidden {
+    display: none;
+}
+
+.journals-read-more-container {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.journals-read-more-btn, .journals-read-less-btn {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px 5px;
+}
+
+.journals-read-more-btn:hover, .journals-read-less-btn:hover {
+    background-color: #003d7a;
+}
+
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+
+
+                /* Container style */
+                .journals-container {
+                    width: 100%;
+                    padding: 10px;
+                }
+
+                /* Grid style */
+                .journals-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                    gap: 24px;
+                    width: 100%;
+                }
+
+                /* Media Query for mobile devices */
+               
+
+
+               
+
+/* Update button styling */
+.journals-btn-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.journals-toggle-btn {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 5px; /* Add spacing between buttons */
+}
+
+.journals-toggle-btn:hover {
+    background-color: #003d7a;
+}
+
+</style>
+
+    <body onload="triggerbtnclick()">   
+        <div class="navbar">
+            <div class="navdiv">
+                <div class="logo" onclick="window.scrollTo(0,0)" style="display: flex; align-items: center; gap: 10px;">
+                    Dr Prabhu Jayagopal 
+                    <img src="./vit.jpg" alt="vit logo" width="35px" height="35px">
+                </div>
+                <nav>
+                    <ul class="navlinks">
+                        <li class="hideOnMobile"><a href="#home">Home</a></li>
+                        <li class="hideOnMobile"><a href="#education">Education</a></li>
+                        <li class="hideOnMobile"><a href="#funded">Projects</a></li>
+                        <li class="hideOnMobile"><a href="#patent">Patents</a></li>
+                        <li class="hideOnMobile"><a href="#Journals">Journals</a></li>
+                        <li class="hideOnMobile"><a href="#books">Books</a></li>
+                        <li class="hideOnMobile"><a href="#memberships">Memberships</a></li>
+                        <li class="hideOnMobile"><a href="#certification">Certification</a></li>
+                       
+                        <li style="margin-bottom: 10px;" class ="menu" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="20px" height="20px"><path d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"/></svg></a></li>
+                         <!-- Light/Dark Mode Toggle Button -->
+        </ul>
+
+                    <ul class="sidebar">
+                        <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#funded">Projects</a></li>
+                        <li><a href="#patent">Patents</a></li>
+                        <li><a href="#Journals">Journals</a></li>
+                        <li><a href="#books">Books</a></li>
+                        <li><a href="#memberships">Memberships</a></li>
+                        <li><a href="#certification">Certification</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="portfolio">
+            <div class="section-title" id="home">
+                <img src="./prabhu.jpg" class="main" alt="prabhu j"><br>
+                <p class="abt">Dr. Prabhu J</p>
+                <p class="abt1"> 
+                    Professor,<br>Department of Software & Systems Engineering<br>SCORE, VIT Vellore<br>Tamil Nadu,India<br>632014
+                </p>
+                <p class="abt1">Email:<a href="mailto:j.prabhu@vit.ac.in" target="_blank"> j.prabhu@vit.ac.in</a>
+                <br>
+                Phone:<a href="tel:+91-9842241883">+91-9842241883</a>
+                <br>
+                </p>
+
+            <ul class="icon">
+                <li><a href="https://www.linkedin.com/in/dr-prabhu-jayagopal-a58b88aa/" target="_blank">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg width="25px" height="25px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path fill="#0A66C2" d="M12.225 12.225h-1.778V9.44c0-.664-.012-1.519-.925-1.519-.926 0-1.068.724-1.068 1.47v2.834H6.676V6.498h1.707v.783h.024c.348-.594.996-.95 1.684-.925 1.802 0 2.135 1.185 2.135 2.728l-.001 3.14zM4.67 5.715a1.037 1.037 0 01-1.032-1.031c0-.566.466-1.032 1.032-1.032.566 0 1.031.466 1.032 1.032 0 .566-.466 1.032-1.032 1.032zm.889 6.51h-1.78V6.498h1.78v5.727zM13.11 2H2.885A.88.88 0 002 2.866v10.268a.88.88 0 00.885.866h10.226a.882.882 0 00.889-.866V2.865a.88.88 0 00-.889-.864z"/></svg>
+            </a></li>
+
+            <li><a href="https://www.facebook.com/jprabhuit?mibextid=ZbWKwL" target="_blank">
+                <?xml version="1.0" encoding="iso-8859-1"?>
+                <svg height="25px" width="25px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                     viewBox="0 0 512 512" xml:space="preserve">
+                <path style="fill:#528DDE;" d="M139.764,272.026h53.887v221.846c0,4.38,3.549,7.929,7.929,7.929h91.369
+                    c4.38,0,7.929-3.549,7.929-7.929V273.071h61.948c4.028,0,7.417-3.023,7.877-7.023l9.409-81.672c0.258-2.247-0.454-4.498-1.957-6.183
+                    c-1.505-1.687-3.658-2.653-5.919-2.653H300.88v-51.196c0-15.433,8.309-23.259,24.7-23.259c2.336,0,46.654,0,46.654,0
+                    c4.38,0,7.929-3.55,7.929-7.929V18.187c0-4.38-3.549-7.929-7.929-7.929h-64.297c-0.452-0.022-1.458-0.059-2.943-0.059
+                    c-11.156,0-49.934,2.19-80.566,30.37c-33.94,31.228-29.222,68.618-28.095,75.101v59.867h-56.571c-4.38,0-7.929,3.549-7.929,7.929
+                    v80.629C131.835,268.476,135.384,272.026,139.764,272.026z"/>
+                <g>
+                    <path style="fill:#3B6197;" d="M292.949,512h-91.368c-9.996,0-18.128-8.133-18.128-18.128V282.225h-43.688
+                        c-9.996,0-18.128-8.133-18.128-18.13v-80.629c0-9.996,8.133-18.128,18.128-18.128h46.371v-48.84
+                        c-1.532-9.878-5.015-49.941,31.386-83.435C250.871,2.385,292.906,0,304.994,0c1.495,0,2.562,0.033,3.176,0.059h64.065
+                        c9.996,0,18.128,8.132,18.128,18.128v74.967c0,9.996-8.133,18.128-18.128,18.128h-46.654c-12.191,0-14.502,4.59-14.502,13.06
+                        v40.997h61.156c5.162,0,10.093,2.21,13.53,6.063c3.437,3.855,5.068,9.009,4.477,14.14l-9.409,81.672
+                        c-1.053,9.153-8.795,16.056-18.009,16.056h-51.749v210.601C311.077,503.867,302.944,512,292.949,512z M203.85,491.602h86.828
+                        v-218.53c0-5.633,4.567-10.199,10.199-10.199h59.924l8.886-77.133h-68.807c-5.632,0-10.199-4.566-10.199-10.199v-51.196
+                        c0-20.95,13.047-33.458,34.901-33.458h44.385V20.458h-62.026c-0.168,0-0.336-0.004-0.504-0.012
+                        c-0.156-0.008-1.009-0.046-2.442-0.046c-10.222,0-45.745,1.996-73.661,27.677c-29.868,27.482-26.025,59.672-24.95,65.847
+                        c0.1,0.577,0.15,1.162,0.15,1.747v59.867c0,5.633-4.567,10.199-10.199,10.199h-54.301v76.09h51.617
+                        c5.632,0,10.199,4.566,10.199,10.199L203.85,491.602L203.85,491.602z"/>
+                    <path style="fill:#3B6197;" d="M224.381,369.211c-5.632,0-10.199-4.566-10.199-10.199v-5.1c0-5.633,4.567-10.199,10.199-10.199
+                        s10.199,4.566,10.199,10.199v5.1C234.581,364.645,230.013,369.211,224.381,369.211z"/>
+                    <path style="fill:#3B6197;" d="M224.381,479.363c-5.632,0-10.199-4.566-10.199-10.199v-77.514c0-5.633,4.567-10.199,10.199-10.199
+                        s10.199,4.566,10.199,10.199v77.514C234.581,474.796,230.013,479.363,224.381,479.363z"/>
+                </g>
+                </svg>
+</a></li>
+
+<li><a href="https://scholar.google.com/citations?user=6-4F8SsAAAAJ&hl=en" target="_blank" >
+    <svg height="25px" width="25px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g fill="none" fill-rule="evenodd"><path d="M256 411.12L0 202.667 256 0z" fill="#4285f4"/><path d="M256 411.12l256-208.453L256 0z" fill="#356ac3"/><circle cx="256" cy="362.667" fill="#a0c3ff" r="149.333"/><path d="M121.037 298.667c23.968-50.453 75.392-85.334 134.963-85.334s110.995 34.881 134.963 85.334H121.037z" fill="#76a7fa"/></g></svg>
+</a></li>
+
+
+<li><a href="https://www.scopus.com/authid/detail.uri?authorId=57191158941" target="_blank">
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+    <svg fill="#fd8a08" width="25px" height="25px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" stroke="#fd8a08">
+    
+    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+    
+    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <g id="SVGRepo_iconCarrier">
+    
+    <title>Scopus icon</title>
+    
+    <path d="M24 19.059l-.14-1.777c-1.426.772-2.945 1.076-4.465 1.076-3.319 0-5.96-2.782-5.96-6.475 0-3.903 2.595-6.31 5.633-6.31 1.917 0 3.39.303 4.792 1.075L24 4.895c-1.286-.608-2.337-.889-4.698-.889-4.534 0-7.97 3.53-7.97 8.017 0 5.12 4.09 7.924 7.9 7.924 1.916 0 3.506-.257 4.768-.888zm-14.954-3.46c0-2.22-1.964-3.225-3.857-4.347C3.716 10.364 2.15 9.756 2.15 8.12c0-1.215.889-2.548 2.642-2.548 1.519 0 2.57.234 3.903 1.029l.117-1.847c-1.239-.514-2.127-.748-4.137-.748C1.8 4.006.047 5.876.047 8.26c0 2.384 2.103 3.413 4.02 4.581 1.426.865 2.922 1.45 2.922 2.992 0 1.496-1.333 2.571-2.922 2.571-1.566 0-2.594-.35-3.786-1.075L0 19.176c1.215.56 2.454.818 4.16.818 2.385 0 4.885-1.473 4.885-4.395z"/>
+    
+    </g>
+    
+    </svg>
+</a></li>
+
+<li><a href="https://orcid.org/0000-0003-3335-6911" target="_blank">
+    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+    <svg width="25px" height="25px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+       <circle cx="512" cy="512" r="512" style="fill:#a6ce39"/>
+       <path d="M373.7 709.3h-50.4V358.5h50.4v350.8zm74-350.8h136.2c129.7 0 186.7 92.7 186.7 175.5 0 90.1-70.4 175.5-186 175.5H447.7v-351zm50.4 305.6h80.2c114.3 0 140.5-86.8 140.5-130 0-70.4-44.9-130-143.1-130h-77.6v260zM381.6 285.5c0 18-14.7 33.1-33.1 33.1-18.3 0-33.1-15.1-33.1-33.1 0-18.3 14.7-33.1 33.1-33.1 18.3 0 33.1 15.1 33.1 33.1z" style="fill:#fff"/>
+    </svg>
+    </a>
+</li>
+        </ul>
+
+
+
+        </div>
+           
+        <div class="section-content" id="read">
+            <p>
+              Dr. Prabhu Jayagopal is a distinguished Professor in the department of Software & Systems Engineering in School of Computer Science Engineering and Information Systems in Vellore Institute of Technology, Vellore, Tamil Nadu, India whose innovative research has advanced the fields of Machine Learning, Artificial Intelligence and IoT related with healthcare. Dr. Prabhu Jayagopal belong to beautiful city Kanchipuram in Tamilnadu, India, Dr. Prabhu Jayagopal pursued his undergraduate studies at the Vellore Institute of Technology, where he earned his B.tech degree in Information Technology in the year 2004. Inspired by his professors' research in computer science engineering, Dr. Prabhu Jayagopal went on to complete his Master's in 2007 and Ph.D. in Computer Science Engineering at the Sathyabama university, Tamilnadu, India, specializing in software systems in the year 2015. Dr. Prabhu's academic career has been characterized by a relentless pursuit of research in computer science engineering. Dr. Prabhu Jayagopal's research has made significant contributions to both academia and industry with interests in innovative methods of thinking and different type styles of teaching and learning of total 16 years of experience as 1 year from industry and 15 years from Teaching. His work on COVID-19 detection based on lung CT scan using deep learning techniques has been instrumental in improving performance and scalability. Additionally, his investigations into Emphasizing privacy and security of edge intelligence with machine learning for healthcare is significant one. Dr. Prabhu Jayagopal's research findings have been disseminated through numerous peer-reviewed publications in leading journals and conference proceedings, His papers are widely cited by researchers in the field and have influenced the design of next-generation computing systems over 104 papers in International Journals, Book Chapters and Conferences. He is also actively involved in interdisciplinary collaborations with colleagues in fields such as neuroscience and bioinformatics, exploring the intersection of computer science with other scientific disciplines. Dr. Prabhu Jayagopal's holds various professionals memberships like International Association of Computer Science and Information Technology (IACSIT), International Association of Engineers (IAENG), Computer Science teacher Association and so on. More likely Dr. Prabhu Jayagopal's Received Research grant on "Weather-based maize yield forecast in Saudi Arabia using statistical analysis and Machine learning" (Institutional Financing track-2020) is accepted and funded by Kingdom of Saudi Arabia, Ministry of Education, King Faisal University, Saudi Arabia (Worth SAR30000).  <span class="read-more-text">
+                    <!-- Content that you want to show/hide -->
+                    Looking ahead, Dr. Prabhu Jayagopal envisions a future where he filed a patent on "IoT Based Smart Infant Monitoring System" computing systems seamlessly integrate IoT and Artificial Intelligence to address society's most pressing challenges in healthcare. He remains committed to mentoring the next generation of computer scientists and engineers of successful 6 Doctoral scientists and 3 Pursuing Ph.D scholars), inspiring them to push the boundaries of what is possible in the world of computing. Dr. Prabhu Jayagopal successfully delivered handful of Guest Lecture talk and presented paper in various conferences held in US, Malaysia, Singapore and Srilanka. Dr. Prabhu Jayagopal's groundbreaking research in computer science engineering has positioned him as a leading figure in the field of machine learning and Artificial intelligence. Through his relentless pursuit of innovation and collaboration, he continues to shape the future of computing and inspire the next generation of researchers to make their mark on the world.</span>
+            </p>
+            <span class="read-more-btn">Read More...</span>
+        </div>
+
+        <div class="section-title " id="education" ><h1>Education</h1></div>
+        <div class="section-content"><ul></ul>
+           <li> 	Ph.D. in Computer Science and Engineering from Sathyabama University, Chennai, Tamil Nadu, India in March 2015.</li>
+           <li> 	Master of Engineering (M.E-Computer Science and Engineering) from Sathyabama University, Chennai, Tamil Nadu      , India in May 2007.</li>
+           <li> 	Bachelor of Technology (B.Tech-IT) from Vellore Institute of Technology, Vellore, Tamil Nadu , India under Madras University in April 2004.</li>
+        </ul>
+        </div>
+                <div class="section-title " id="funded" ><h1>Funded Projects</h1></div>
+                <div class="section-content">
+                    <p>Received Research grant on "Weather-based maize yield forecast in Saudi Arabia using statistical analysis and Machine learning" (Institutional Financing track-2020) is accepted and funded by Kingdom of Saudi Arabia, Ministry of Education, King Faisal University, Saudi Arabia (Worth SAR30000).</p>
+                </div>
+          
+    
+          
+                <div class="section-title" id="patent"><h1>Patent</h1></div>
+                <div class="section-content">
+                    <ul>
+                        <li>Indian Patent, Application No.202041048246A "IoT Based Smart Infant Monitoring System" November 2020 (Published).</li>
+                        <li>Indian Design Patent, Design No. 354503-001 "Server Rack December 2021.</li>
+                    </ul>
+                </div>
+
+
+
+                <div class="section-title" id="Journals"><h1>Journals</h1></div>
+
+                <div class="journals-container">
+                    <!-- Year filters -->
+                    <div class="year-filters">
+                        <button class="year-btn" id="a1" onclick="filterJournals('2024')">2024</button>
+                        <button class="year-btn" onclick="filterJournals('2023')">2023</button>
+                        <button class="year-btn" onclick="filterJournals('2022')">2022</button>
+                        <button class="year-btn" onclick="filterJournals('2021')">2021</button>
+                        <button class="year-btn" onclick="filterJournals('2020')">2020</button>
+                        <button class="year-btn" onclick="filterJournals('2019')">2019</button>
+                        <button class="year-btn" onclick="filterJournals('2018')">2018</button>
+                    </div>
+
+                    <div class="journals-grid">
+
+
+    <!-- 2024 Journals -->
+<div class="journal-item" data-year="2024">
+    <a href="https://www.sciencedirect.com/science/article/pii/S2090447924002247" class="size_increase">Hybrid Deep Learning Optimization for Alzheimer's Disease Prediction</a>
+    <div class="authors">
+        Prakash Mohan, Vijay Anand Rajasekaran, Prasanna Santhanam, Kiruba Thangam Raja, Prabhu Jayagopal, Sandeep Kumar, Saurav Mallik, Hong Qin
+    </div>
+    <div class="publication">
+        Ain Shams Engineering Journal, Vol:15, Issue: 10, Pg.No(102849)
+    </div>
+    <div class="year">2024</div>
+</div>
+
+<div class="journal-item" data-year="2024">
+    <a href="https://ojs.bonviewpress.com/index.php/jdsis/article/view/1530" class="size_increase">Early Detection of Banana Leaf Disease Using Novel Deep Convolutional Neural Network</a>
+    <div class="authors">
+        NR Rajalakshmi, S Saravanan, J Arunpandian, Sandeep Kumar Mathivanan, Prabhu Jayagopal, Saurav Mallik, Guimin Qin
+    </div>
+    <div class="publication">
+        Journal of Data Science and Intelligent Systems
+    </div>
+    <div class="year">2024</div>
+</div>
+
+<div class="journal-item" data-year="2024">
+    <a href="https://link.springer.com/article/10.1007/s11042-024-19545-6" class="size_increase">iLIAC: An approach of identifying dissimilar groups on unstructured numerical image dataset using improved agglomerative clustering technique</a>
+    <div class="authors">
+        Syed Thouheed Ahmed, Afifa Salsabil Fathima, Sandeep Kumar Mathivanan, Prabhu Jayagopal, Abdu Saif, Sachin Kumar Gupta, Garima Sinha
+    </div>
+    <div class="publication">
+        Multimedia Tools and Applications, Pg.No(1-23)
+    </div>
+    <div class="year">2024</div>
+</div>
+
+<div class="journal-item" data-year="2024">
+    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=6-4F8SsAAAAJ&pagesize=80&sortby=pubdate&citation_for_view=6-4F8SsAAAAJ:5awf1xo2G04C" class="size_increase">Correction: Detection and Grade Classification of Diabetic Retinopathy and Adult Vitelliform Macular Dystrophy Based on Ophthalmoscopy Images</a>
+    <div class="authors">
+        Saravanan Srinivasan, Rajalakshmi Nagarnaidu Rajaperumal, Sandeep Kumar Mathivanan, Prabhu Jayagopal, Sujatha Krishnamoorthy, Seifedine Kardy
+    </div>
+    <div class="publication">
+        Electronics, Vol:13, Issue: 9, Pg.No(1627)
+    </div>
+    <div class="year">2024</div>
+</div>
+
+<div class="journal-item" data-year="2024">
+    <a href="https://www.researchsquare.com/article/rs-4064409/v1" class="size_increase">Developing a Modified Deep Belief Network with metaheuristic optimization Algorithm for predicting Alzheimer disease using Electroencephalogram</a>
+    <div class="authors">
+        Prabhu Jayagopal, Prakash Mohan, Vijay Anand Rajasekar, Sree Dharinya SathishKumar, Sandeep Kumar Mathivanan, Saurav Mallik, Hong Qin
+    </div>
+    <div class="publication">
+        Scientific Reports
+    </div>
+    <div class="year">2024</div>
+</div>
+
+<div class="journal-item" data-year="2024">
+    <a href="https://www.nature.com/articles/s41598-024-54399-w" class="size_increase">A modified generative adversarial networks with Yolov5 for automated forest health diagnosis from aerial imagery and Tabu search algorithm</a>
+    <div class="authors">
+        Prabhu Jayagopal, Kumar Purushothaman Janaki, Prakash Mohan, Upendra Babu Kondapaneni, Jayalakshmi Periyasamy, Sandeep Kumar Mathivanan, Gemmachis Teshite Dalu
+    </div>
+    <div class="publication">
+        Scientific Reports, Vol:14, Issue: 1, Pg.No(4814)
+    </div>
+    <div class="year">2024</div>
+</div>
+
+<div class="journal-item" data-year="2024">
+    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11266669/" class="size_increase">Author Correction: An active learning machine technique based prediction of cardiovascular heart disease from UCI-repository database</a>
+    <div class="authors">
+        Saravanan Srinivasan, Subathra Gunasekaran, Sandeep Kumar Mathivanan, Benjula Anbu Malar, Prabhu Jayagopal, Gemmachis Teshite Dalu
+    </div>
+    <div class="publication">
+        Scientific Reports, Vol:14
+    </div>
+    <div class="year">2024</div>
+</div>
+                        <!-- Journals will be organized by year -->
+                        <!-- 2023 Journals -->
+        
+                         
+<div class="journal-item" data-year="2023">
+    <a href="#" class="size_increase">Hybrid Whale and Gray Wolf Deep Learning Optimization Algorithm for Prediction of Alzheimer's Disease</a>
+    <div class="authors">
+        Dhakhinamoorthy C., Mani S.K., Mathivanan S.K., Mohan S., Jayagopal P., Mallik S., Qin H.
+    </div>
+    <div class="publication">
+        Mathematics, Vol:11, Issue: 5
+    </div>
+    <div class="doi">DOI: 10.3390/math11051136</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="#" class="size_increase">A Block-Based Feature Selection Method for Classification of Web Pages</a>
+    <div class="authors">
+        Abdullah A., Sandeep Kumar M., Prabhu J., Balusamy B.
+    </div>
+    <div class="publication">
+        International Journal of Intelligent Systems and Applications in Engineering, Vol:11, Issue: 4, Pg.No(890-902)
+    </div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://www.igi-global.com/article/deep-learning-speech-synthesis-model-for-wordcharacter-level-recognition-in-the-tamil-language/316824" class="size_increase">Deep Learning Speech Synthesis Model for Word/Character-Level Recognition in the Tamil Language</a>
+    <div class="authors">
+        Rajendran S., Raja K.T., Nagarajan G., Dass S.A., Kumar S.M., Jayagopal P.
+    </div>
+    <div class="publication">
+        International Journal of e-Collaboration, Vol:19, Issue: 4
+    </div>
+    <div class="doi">DOI: 10.4018/IJeC.316824</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://link.springer.com/article/10.1007/s10845-021-01866-0" class="size_increase">Context-sensitive lexicon for imbalanced text sentiment classification using bidirectional LSTM</a>
+    <div class="authors">
+        Pavan Kumar M.R., Jayagopal P.
+    </div>
+    <div class="publication">
+        Journal of Intelligent Manufacturing
+    </div>
+    <div class="doi">DOI: 10.1007/s10845-021-01866-0</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://content.iospress.com/download/intelligent-data-analysis/ida237430?id=intelligent-data-analysis%2Fida237430" class="size_increase">Deep learning models for predicting the position of the head on an X-ray image for Cephalometric analysis</a>
+    <div class="authors">
+        Prasanna K., Jyothi C.B., Mathivanan S.K., Jayagopal P., Saif A., Samuel D.J.
+    </div>
+    <div class="publication">
+        Intelligent Data Analysis, Vol:27, Pg.No(3-27)
+    </div>
+    <div class="doi">DOI: 10.3233/IDA-237430</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://www.mdpi.com/2076-3417/13/5/2801" class="size_increase">Wireless Sensor Networks Based on Multi-Criteria Clustering and Optimal Bio-Inspired Algorithm for Energy-Efficient Routing</a>
+    <div class="authors">
+        Vellaichamy J., Basheer S., Bai P.S.M., Khan M., Kumar Mathivanan S., Jayagopal P., Babu J.C.
+    </div>
+    <div class="publication">
+        Applied Sciences (Switzerland), Vol:13, Issue: 5
+    </div>
+    <div class="doi">DOI: 10.3390/app13052801</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2023/7317938" class="size_increase">A Deep Learning Approach to Detect Microsleep Using Various Forms of EEG Signal</a>
+    <div class="authors">
+        Sangeetha S.K.B., Mathivanan S.K., Muthukumaran V., Pughazendi N., Jayagopal P., Uddin M.S.
+    </div>
+    <div class="publication">
+        Mathematical Problems in Engineering, Vol:2023
+    </div>
+    <div class="doi">DOI: 10.1155/2023/7317938</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://link.springer.com/article/10.1007/s12145-022-00887-4" class="size_increase">Simulating crop yield estimation and prediction through geospatial data for specific regional analysis</a>
+    <div class="authors">
+        Mathivanan S.K., Jayagopal P.
+    </div>
+    <div class="publication">
+        Earth Science Informatics
+    </div>
+    <div class="doi">DOI: 10.1007/s12145-022-00887-4</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://www.mdpi.com/2075-4418/13/3/548" class="size_increase">Local-Ternary-Pattern-Based Associated Histogram Equalization Technique for Cervical Cancer Detection</a>
+    <div class="authors">
+        Srinivasan S., Raju A.B.K., Mathivanan S.K., Jayagopal P., Babu J.C., Sahu A.K.
+    </div>
+    <div class="publication">
+        Diagnostics, Vol:13, Issue: 3
+    </div>
+    <div class="doi">DOI: 10.3390/diagnostics13030548</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2023/6048891" class="size_increase">A Distributed Framework for Predictive Analytics Using Big Data and MapReduce Parallel Programming</a>
+    <div class="authors">
+        Natesan P., Sathishkumar V.E., Mathivanan S.K., Venkatasen M., Jayagopal P., Allayear S.M.
+    </div>
+    <div class="publication">
+        Mathematical Problems in Engineering, Vol:2023
+    </div>
+    <div class="doi">DOI: 10.1155/2023/6048891</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="#" class="size_increase">Detection and Classification of Adult Epilepsy Using Hybrid Deep Learning Approach</a>
+    <div class="authors">
+        Srinivasan S., Dayalane S., Mathivanan S., Rajadurai H., Jayagopal P., Dalu G.T.
+    </div>
+    <div class="publication">
+        Scientific Reports, Vol:13, Issue: 1
+    </div>
+    <div class="doi">DOI: 10.1038/s41598-023-44763-7</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="#" class="size_increase">Breast Cancer Classification Using Synthesized Deep Learning Model with Metaheuristic Optimization Algorithm</a>
+    <div class="authors">
+        Thirumalaisamy S., Thangavilou K., Rajadurai H., Saidani O., Alturki N., Mathivanan S.K., Jayagopal P., Gochhait S.
+    </div>
+    <div class="publication">
+        Diagnostics, Vol:13, Issue: 18
+    </div>
+    <div class="doi">DOI: 10.3390/diagnostics13182925</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="#" class="size_increase">An Active Learning Machine Technique Based Prediction of Cardiovascular Heart Disease from UCI-Repository Database</a>
+    <div class="authors">
+        Srinivasan S., Gunasekaran S., Mathivanan S.K., M. B B.A.M., Jayagopal P., Dalu G.T.
+    </div>
+    <div class="publication">
+        Scientific Reports, Vol:13, Issue: 1
+    </div>
+    <div class="doi">DOI: 10.1038/s41598-023-40717-1</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://www.mdpi.com/2075-4418/13/8/1385" class="size_increase">A Framework of Faster CRNN and VGG16-Enhanced Region Proposal Network for Detection and Grade Classification of Knee RA</a>
+    <div class="authors">
+        Srinivasan S., Gunasekaran S., Mathivanan S.K., Jayagopal P., Khan M.A., Alasiry A., Marzougui M., Masood A.
+    </div>
+    <div class="publication">
+        Diagnostics, Vol:13, Issue: 8
+    </div>
+    <div class="doi">DOI: 10.3390/diagnostics13081385</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://www.worldscientific.com/doi/abs/10.1142/S1752890922420065" class="size_increase">An Improved MangoNet Architecture Using Harris Hawks Optimization for Fruit Classification with Uncertainty Estimation</a>
+    <div class="authors">
+        Rajalaxmi R.R., Saradha M., Fathima S.K., Kumar V.E.S., Kumar M.S., Prabhu J.
+    </div>
+    <div class="publication">
+        Journal of Uncertain Systems
+    </div>
+    <div class="doi">DOI: 10.1142/S1752890922420065</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://www.mdpi.com/2079-9292/12/4/862" class="size_increase">Detection and Grade Classification of Diabetic Retinopathy and Adult Vitelliform Macular Dystrophy Based on Ophthalmoscopy Images</a>
+    <div class="authors">
+        Srinivasan S., Nagarnaidu Rajaperumal R., Mathivanan S.K., Jayagopal P., Krishnamoorthy S., Kardy S.
+    </div>
+    <div class="publication">
+        Electronics (Switzerland), Vol:12, Issue: 4
+    </div>
+    <div class="doi">DOI: 10.3390/electronics12040862</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2023/1040461" class="size_increase">Trajectory Planning and Collision Control of a Mobile Robot: A Penalty-Based PSO Approach</a>
+    <div class="authors">
+        Pandey K.K., Kumbhar C., Parhi D.R., Mathivanan S.K., Jayagopal P., Haque A.
+    </div>
+    <div class="publication">
+        Mathematical Problems in Engineering, Vol:2023
+    </div>
+    <div class="doi">DOI: 10.1155/2023/1040461</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://link.springer.com/article/10.1186/s12859-023-05584-7" class="size_increase">Detection for Melanoma Skin Cancer through ACCF, BPPF, and CLF Techniques with Machine Learning Approach</a>
+    <div class="authors">
+        Kavitha P., Ayyappan G., Jayagopal P., Mathivanan S.K., Mallik S., Al-Rasheed A., Alqahtani M.S., Soufiene B.O.
+    </div>
+    <div class="publication">
+        BMC Bioinformatics, Vol:24, Issue: 1
+    </div>
+    <div class="doi">DOI: 10.1186/s12859-023-05584-7</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://www.worldscientific.com/doi/abs/10.1142/S021853932350002X" class="size_increase">Phonetic-based Forward Online Transliteration Tool from English to Tamil Language</a>
+    <div class="authors">
+        Anbukkarasi S., Elangovan D., Periyasamy J., Sathishkumar V.E., Sree Dharinya S., Sandeep Kumar M., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Reliability, Quality and Safety Engineering
+    </div>
+    <div class="doi">DOI: 10.1142/S021853932350002X</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://link.springer.com/article/10.1007/s00521-023-09171-y" class="size_increase">Classifying Distinct Emotions from Parents of ASD Child Using EEG Source Data by Combining Bernoulli–Laplace Prior and Graph Neural Networks</a>
+    <div class="authors">
+        ArulDass S.D., Jayagopal P.
+    </div>
+    <div class="publication">
+        Neural Computing and Applications
+    </div>
+    <div class="doi">DOI: 10.1007/s00521-023-09171-y</div>
+    <div class="year">2023</div>
+</div>
+
+<div class="journal-item" data-year="2023">
+    <a href="https://www.worldscientific.com/doi/abs/10.1142/S1752890922420107" class="size_increase">Uncertainty Quantification to Improve the Classification of Melanoma and Basal Skin Cancer Using ResNet Model</a>
+    <div class="authors">
+        Deepa D., Muthukumaran V., Vinodhini V., Selvaraj S., Sandeep Kumar M., Prabhu J.
+    </div>
+    <div class="publication">
+        Journal of Uncertain Systems, Vol:16, Issue: 1
+    </div>
+    <div class="doi">DOI: 10.1142/S1752890922420107</div>
+    <div class="year">2023</div>
+</div>
+                            <!-- 2023 journals -->
+                        
+                        <!-- 2022 Journals -->
+<div class="journal-item" data-year="2022">
+    <a href="https://link.springer.com/article/10.1007/s11600-022-00759-x" class="size_increase">Identifying Region Specific Seasonal Crop for Leaf Borne Diseases by Utilizing Deep Learning Techniques</a>
+    <div class="authors">
+        Jayagopal P., Rajendran S., Mathivanan S.K., Sathish Kumar S.D., Raja K.T., Paneerselvam S.
+    </div>
+    <div class="publication">
+        Acta Geophysica
+    </div>
+    <div class="doi">DOI: 10.1007/s11600-022-00759-x</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2022/8014979" class="size_increase">Diagnosis of Retinal Diseases Based on Bayesian Optimization Deep Learning Network Using Optical Coherence Tomography Images</a>
+    <div class="authors">
+        Subramanian M., Kumar M.S., Sathishkumar V.E., Prabhu J., Karthick A., Ganesh S.S., Meem M.A.
+    </div>
+    <div class="publication">
+        Computational Intelligence and Neuroscience, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/8014979</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://link.springer.com/article/10.1007/s11600-022-00854-z" class="size_increase">Weather-based Maize Yield Forecast in Saudi Arabia Using Statistical Analysis and Machine Learning</a>
+    <div class="authors">
+        Jayagopal P., Muthukumaran V., Koti M.S., Kumar S.S., Rajendran S., Mathivanan S.K.
+    </div>
+    <div class="publication">
+        Acta Geophysica
+    </div>
+    <div class="doi">DOI: 10.1007/s11600-022-00854-z</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://cdn.techscience.cn/ueditor/files/cmc/TSP_CMC-72-3/TSP_CMC_25865/TSP_CMC_25865.pdf" class="size_increase">Imbalanced Classification in Diabetics Using Ensembled Machine Learning</a>
+    <div class="authors">
+        Kumar M.S., Khan M.Z., Rajendran S., Noor A., Dass A.S., Prabhu J.
+    </div>
+    <div class="publication">
+        Computers, Materials and Continua, Vol:72, Issue: 3, Pg.No(4397-4409)
+    </div>
+    <div class="doi">DOI: 10.32604/cmc.2022.025865</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://www.mdpi.com/2075-4418/12/12/3188" class="size_increase">Identifying Complex Emotions in Alexithymia Affected Adolescents Using Machine Learning Techniques</a>
+    <div class="authors">
+        ArulDass S.D., Jayagopal P.
+    </div>
+    <div class="publication">
+        Diagnostics, Vol:12, Issue: 12
+    </div>
+    <div class="doi">DOI: 10.3390/diagnostics12123188</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="#" class="size_increase">Influences of Aqueous Nanofluid Emulsion on Diesel Engine Performance, Combustion, and Emission: IoT (Emission Monitoring System)</a>
+    <div class="authors">
+        Venkatesh B., Babu J.C., Mathivanan S.K., Jayagopal P., Prasanna S., Uddin M.S.
+    </div>
+    <div class="publication">
+        Advances in Materials Science and Engineering, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/8470743</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2022/7672196" class="size_increase">COVID-19 Detection Based on Lung CT Scan Using Deep Learning Techniques</a>
+    <div class="authors">
+        Kogilavani S.V., Prabhu J., Sandhiya R., Kumar M.S., Subramaniam U., Karthick A., Muhibbullah M., Imam S.B.S.
+    </div>
+    <div class="publication">
+        Computational and Mathematical Methods in Medicine, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/7672196</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2022/8571970" class="size_increase">Investigation of Applying Machine Learning and Hyperparameter Tuned Deep Learning Approaches for Arrhythmia Detection in ECG Images</a>
+    <div class="authors">
+        Shanmugavadivel K., Sathishkumar V.E., Kumar M.S., Maheshwari V., Prabhu J., Allayear S.M.
+    </div>
+    <div class="publication">
+        Computational and Mathematical Methods in Medicine, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/8571970</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="#" class="size_increase">Feature Learning-Based Generative Adversarial Network Data Augmentation for Class-Based Few-Shot Learning</a>
+    <div class="authors">
+        Subedi B., Sathishkumar V.E., Maheshwari V., Kumar M.S., Jayagopal P., Allayear S.M.
+    </div>
+    <div class="publication">
+        Mathematical Problems in Engineering, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/9710667</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://www.tandfonline.com/doi/abs/10.1080/1206212X.2019.1700335" class="size_increase">A Preprocessing Method Combined with an Ensemble Framework for Multiclass Imbalanced Data Classification</a>
+    <div class="authors">
+        Pavan Kumar M.R., Jayagopal P.
+    </div>
+    <div class="publication">
+        International Journal of Computers and Applications
+    </div>
+    <div class="doi">DOI: 10.1080/1206212X.2019.1700335</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2022/9166873" class="size_increase">Diagnosing Breast Cancer Based on the Adaptive Neuro-Fuzzy Inference System</a>
+    <div class="authors">
+        Chidambaram S., Ganesh S.S., Karthick A., Jayagopal P., Balachander B., Manoharan S.
+    </div>
+    <div class="publication">
+        Computational and Mathematical Methods in Medicine, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/9166873</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2022/9423395" class="size_increase">Design and Analysis of Multilayered Neural Network-Based Intrusion Detection System in the Internet of Things Network</a>
+    <div class="authors">
+        Sangeetha S.K.B., Mani P., Maheshwari V., Jayagopal P., Sandeep Kumar M., Allayear S.M.
+    </div>
+    <div class="publication">
+        Computational Intelligence and Neuroscience, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/9423395</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://link.springer.com/article/10.1007/s11600-022-00911-7" class="size_increase">Utilizing Satellite and UAV Data for Crop Yield Prediction and Monitoring Through Deep Learning</a>
+    <div class="authors">
+        Mathivanan S.K., Jayagopal P.
+    </div>
+    <div class="publication">
+        Acta Geophysica
+    </div>
+    <div class="doi">DOI: 10.1007/s11600-022-00911-7</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://d1wqtxts1xzle7.cloudfront.net/105586725/pdf-libre.pdf?1694129864=&response-content-disposition=inline%3B+filename%3DDetection_and_Classification_of_Tomato_C.pdf&Expires=1731952790&Signature=ZMsCuaIhWejtsnVfMppuzjQ6QDVaNNorPves04D-xNQ0eR1~x9CIIclK8X0WdF5Ex2qY2gRD83hCC2KABdxD5WJaHOJjbXvikQ0WdnkvmdAeBeUnDiCndAuLVVQ5Bqk5~9Rzyhm9WYgqFUurGCW708F4GBMq60Bcv-Y0uKZrfuaL238UQP~H37Ztf7AQxMmpR2ltcQKvS-ImurJgBfd2Asjk234YawUnDylRgj77Bqzlg7JFMFqUqCcWruC0SqBor-F4xa3XvU1X1DhVeBNdLw75KJ8YpuQ9jzgUvKF5CMCxe9ZTnkVyx7wWKWg4IMY4z7D9kULQBYVb92hUXHPZPw__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA" class="size_increase">Detection and Classification of Tomato Crop Disease Using Convolutional Neural Network</a>
+    <div class="authors">
+        Sakkarvarthi G., Sathianesan G.W., Murugan V.S., Reddy A.J., Jayagopal P., Elsisi M.
+    </div>
+    <div class="publication">
+        Electronics (Switzerland), Vol:11, Issue: 21
+    </div>
+    <div class="doi">DOI: 10.3390/electronics11213618</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2022/3947760" class="size_increase">IoT-Based Intelligent System for Internal Crack Detection in Building Blocks</a>
+    <div class="authors">
+        Babu J.C., Kumar M.S., Jayagopal P., Sathishkumar V.E., Rajendran S., Kumar S., Karthick A., Mahseena A.M.
+    </div>
+    <div class="publication">
+        Journal of Nanomaterials, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/3947760</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://www.emerald.com/insight/content/doi/10.1108/ijicc-05-2021-0099/full/html" class="size_increase">Emphasizing Privacy and Security of Edge Intelligence with Machine Learning for Healthcare</a>
+    <div class="authors">
+        Rajendran S., Mathivanan S.K., Jayagopal P., Purushothaman Janaki K., Manickam Bernard B.A.M., Pandy S., Sorakaya Somanathan M.
+    </div>
+    <div class="publication">
+        International Journal of Intelligent Computing and Cybernetics
+    </div>
+    <div class="doi">DOI: 10.1108/IJICC-05-2021-0099</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2022/9238968" class="size_increase">Relevant-Based Feature Ranking (RBFR) Method for Text Classification Based on Machine Learning Algorithm</a>
+    <div class="authors">
+        Jasti V.D.P., Kumar G.K., Kumar M.S., Maheshwari V., Jayagopal P., Pant B., Karthick A., Muhibbullah M.
+    </div>
+    <div class="publication">
+        Journal of Nanomaterials, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/9238968</div>
+    <div class="year">2022</div>
+</div>
+
+<div class="journal-item" data-year="2022">
+    <a href="https://onlinelibrary.wiley.com/doi/full/10.1155/2022/5736630" class="size_increase">An Enhanced Triadic Color Scheme for Content-Based Image Retrieval</a>
+    <div class="authors">
+        Sangeetha S.K.B., Mathivanan S.K., Pandi T., Arivu Selvan K., Jayagopal P., Teshite Dalu G.
+    </div>
+    <div class="publication">
+        Mathematical Problems in Engineering, Vol:2022
+    </div>
+    <div class="doi">DOI: 10.1155/2022/5736630</div>
+    <div class="year">2022</div>
+</div>
+                            <!-- 2022 journals -->
+<!-- 2021 Journals -->
+<div class="journal-item" data-year="2021">
+    <a href="https://link.springer.com/article/10.1007/s10772-021-09838-8" class="size_increase">Language Dialect-Based Speech Emotion Recognition Through Deep Learning Techniques</a>
+    <div class="authors">
+        Rajendran S., Mathivanan S.K., Jayagopal P., Venkatasen M., Pandi T., Sorakaya Somanathan M., Thangaval M., Mani P.
+    </div>
+    <div class="publication">
+        International Journal of Speech Technology
+    </div>
+    <div class="doi">DOI: 10.1007/s10772-021-09838-8</div>
+    <div class="year">2021</div>
+</div>
+
+<div class="journal-item" data-year="2021">
+    <a href="https://www.emerald.com/insight/content/doi/10.1108/ijpcc-03-2020-0009/full/html" class="size_increase">Trust-Based Authentication Scheme (TBAS) for Cloud Computing Environment with Kerberos Protocol Using Distributed Controller and Prevention Attack</a>
+    <div class="authors">
+        Anbu Malar M.B.B., J P.
+    </div>
+    <div class="publication">
+        International Journal of Pervasive Computing and Communications
+    </div>
+    <div class="doi">DOI: 10.1108/IJPCC-03-2020-0009</div>
+    <div class="year">2021</div>
+</div>
+
+<div class="journal-item" data-year="2021">
+    <a href="https://www.inderscienceonline.com/doi/abs/10.1504/IJUWBCS.2021.119137" class="size_increase">Detection and Localisation of Cars in Indoor Parking Through UWB Radar-Based Sensing System</a>
+    <div class="authors">
+        Rajendran S., Mathivanan S.K., Somanathan M.S., Geetha M., Jayagopal P., Venkatasen M., Mani P., Christopher J.
+    </div>
+    <div class="publication">
+        International Journal of Ultra Wideband Communications and Systems, Vol:4, Issue: 44289, Pg.No(182-190)
+    </div>
+    <div class="doi">DOI: 10.1504/IJUWBCS.2021.119137</div>
+    <div class="year">2021</div>
+</div>
+
+<div class="journal-item" data-year="2021">
+    <a href="https://www.sciencedirect.com/science/article/pii/S0263224120309660" class="size_increase">Accessing Covid19 Epidemic Outbreak in Tamilnadu and the Impact of Lockdown Through Epidemiological Models and Dynamic Systems</a>
+    <div class="authors">
+        Rajendran S., Jayagopal P.
+    </div>
+    <div class="publication">
+        Measurement: Journal of the International Measurement Confederation, Vol:169
+    </div>
+    <div class="doi">DOI: 10.1016/j.measurement.2020.108432</div>
+    <div class="year">2021</div>
+</div>
+
+<div class="journal-item" data-year="2021">
+    <a href="https://www.sciencedirect.com/science/article/abs/pii/S1574954121001618" class="size_increase">Delineation of Field Boundary from Multispectral Satellite Images Through U-Net Segmentation and Template Matching</a>
+    <div class="authors">
+        M S.K., Jayagopal P.
+    </div>
+    <div class="publication">
+        Ecological Informatics, Vol:64
+    </div>
+    <div class="doi">DOI: 10.1016/j.ecoinf.2021.101370</div>
+    <div class="year">2021</div>
+</div>
+
+<div class="journal-item" data-year="2021">
+    <a href="#" class="size_increase">A Hybrid Threat Model for System-Centric and Attack-Centric for Effective Security Design in SDLC</a>
+    <div class="authors">
+        Viswanathan G., Prabhu P.J.
+    </div>
+    <div class="publication">
+        Web Intelligence, Vol:19, Issue: 44228, Pg.No(1-11)
+    </div>
+    <div class="doi">DOI: 10.3233/WEB-210452</div>
+    <div class="year">2021</div>
+</div>
+
+<div class="journal-item" data-year="2021">
+    <a href="https://www.inderscienceonline.com/doi/abs/10.1504/IJUWBCS.2021.119132" class="size_increase">Remote Monitoring of Indoor/Outdoor Movement in Epidemiological Situations Utilizing UWB Transceivers</a>
+    <div class="authors">
+        Rajendran S., Jayagopal P., Mathivanan S.K., Prasanna S., Manivannan S.S., Kumar P.J., Venkatasen M., Mani P.
+    </div>
+    <div class="publication">
+        International Journal of Ultra Wideband Communications and Systems, Vol:4, Issue: 44289, Pg.No(124-133)
+    </div>
+    <div class="doi">DOI: 10.1504/IJUWBCS.2021.119132</div>
+    <div class="year">2021</div>
+</div>
+
+<div class="journal-item" data-year="2021">
+    <a href="https://link.springer.com/article/10.1007/s13735-021-00213-6" class="size_increase">Multi-Class Imbalanced Image Classification Using Conditioned GANs</a>
+    <div class="authors">
+        Pavan Kumar M.R., Jayagopal P.
+    </div>
+    <div class="publication">
+        International Journal of Multimedia Information Retrieval
+    </div>
+    <div class="doi">DOI: 10.1007/s13735-021-00213-6</div>
+    <div class="year">2021</div>
+</div>
+
+<!-----2020 ----->
+<!-- 2020 Journals -->
+<div class="journal-item" data-year="2020">
+    <a href="#" class="size_increase">A Novel Approach for Detecting Diabetic Retinopathy Disease Using Deep Learning</a>
+    <div class="authors">
+        Sandeep Kumar M., Ganesan R., Manivannan S.S., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Advanced Science and Technology, Vol:29, Issue: 7, Pg.No(4110-4118)
+    </div>
+    <div class="year">2020</div>
+</div>
+
+<div class="journal-item" data-year="2020">
+    <a href="#" class="size_increase">A Novel Approach for Detecting Diabetic Retinopathy Disease Using Deep Learning</a>
+    <div class="authors">
+        Sandeep Kumar M., Ganesan R., Manivannan S.S., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Advanced Science and Technology, Vol:29, Issue: 7, Pg.No(4110-4118)
+    </div>
+    <div class="year">2020</div>
+</div>
+
+<div class="journal-item" data-year="2020">
+    <a href="#" class="size_increase">A Novel Approach for Detecting Diabetic Retinopathy Disease Using Deep Learning</a>
+    <div class="authors">
+        Sandeep Kumar M., Ganesan R., Manivannan S.S., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Advanced Science and Technology, Vol:29, Issue: 7, Pg.No(4110-4118)
+    </div>
+    <div class="year">2020</div>
+</div>
+
+<div class="journal-item" data-year="2020">
+    <a href="#" class="size_increase">A Novel Approach for Detecting Diabetic Retinopathy Disease Using Deep Learning</a>
+    <div class="authors">
+        Sandeep Kumar M., Ganesan R., Manivannan S.S., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Advanced Science and Technology, Vol:29, Issue: 7, Pg.No(4110-4118)
+    </div>
+    <div class="year">2020</div>
+</div>
+
+<div class="journal-item" data-year="2020">
+    <a href="#" class="size_increase">A Novel Approach for Detecting Diabetic Retinopathy Disease Using Deep Learning</a>
+    <div class="authors">
+        Sandeep Kumar M., Ganesan R., Manivannan S.S., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Advanced Science and Technology, Vol:29, Issue: 7, Pg.No(4110-4118)
+    </div>
+    <div class="year">2020</div>
+</div>
+
+<div class="journal-item" data-year="2020">
+    <a href="#" class="size_increase">A Novel Approach for Detecting Diabetic Retinopathy Disease Using Deep Learning</a>
+    <div class="authors">
+        Sandeep Kumar M., Ganesan R., Manivannan S.S., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Advanced Science and Technology, Vol:29, Issue: 7, Pg.No(4110-4118)
+    </div>
+    <div class="year">2020</div>
+</div>
+
+<div class="journal-item" data-year="2020">
+    <a href="#" class="size_increase">A Novel Approach for Detecting Diabetic Retinopathy Disease Using Deep Learning</a>
+    <div class="authors">
+        Sandeep Kumar M., Ganesan R., Manivannan S.S., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Advanced Science and Technology, Vol:29, Issue: 7, Pg.No(4110-4118)
+    </div>
+    <div class="year">2020</div>
+</div>
+
+<div class="journal-item" data-year="2020">
+    <a href="#" class="size_increase">A Novel Approach for Detecting Diabetic Retinopathy Disease Using Deep Learning</a>
+    <div class="authors">
+        Sandeep Kumar M., Ganesan R., Manivannan S.S., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Advanced Science and Technology, Vol:29, Issue: 7, Pg.No(4110-4118)
+    </div>
+    <div class="year">2020</div>
+</div>
+
+<div class="journal-item" data-year="2020">
+    <a href="#" class="size_increase">A Novel Approach for Detecting Diabetic Retinopathy Disease Using Deep Learning</a>
+    <div class="authors">
+        Sandeep Kumar M., Ganesan R., Manivannan S.S., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Advanced Science and Technology, Vol:29, Issue: 7, Pg.No(4110-4118)
+    </div>
+    <div class="year">2020</div>
+</div>
+
+<!---2019-->
+<!-- 2019 Journals -->
+<div class="journal-item" data-year="2019">
+    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=6-4F8SsAAAAJ&cstart=80&sortby=pubdate&citation_for_view=6-4F8SsAAAAJ:4DMP91E08xMC" class="size_increase">Image Distribution with Scalable Access Control for Privacy in Social Network</a>
+    <div class="authors">
+        Vijay Anand R., Prabhu J., Kumar P.J., Kiruba Thangam R., Muthamilselvan T.
+    </div>
+    <div class="publication">
+        International Journal of Innovative Technology and Exploring Engineering, Vol:8, Issue: 10, Pg.No(2191-2194)
+    </div>
+    <div class="doi">DOI: 10.35940/ijitee.J9409.0881019</div>
+    <div class="year">2019</div>
+</div>
+
+<div class="journal-item" data-year="2019">
+    <a href="https://www.igi-global.com/article/ameliorating-the-privacy-on-large-scale-aviation-dataset-by-implementing-mapreduce-multidimensional-hybrid-k-anonymization/240662" class="size_increase">Ameliorating the Privacy on Large Scale Aviation Dataset by Implementing MapReduce Multidimensional Hybrid K-Anonymization</a>
+    <div class="authors">
+        Stephen Dass A., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Web Portals, Vol:11, Issue: 2, Pg.No(14-40)
+    </div>
+    <div class="doi">DOI: 10.4018/IJWP.2019070102</div>
+    <div class="year">2019</div>
+</div>
+
+<div class="journal-item" data-year="2019">
+    <a href="https://www.inderscienceonline.com/doi/abs/10.1504/IJITST.2020.107079" class="size_increase">Hybrid Model for Movie Recommendation System Using Fireflies and Fuzzy C-Means</a>
+    <div class="authors">
+        Sandeep Kumar M., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Web Portals, Vol:11, Issue: 2, Pg.No(1-13)
+    </div>
+    <div class="doi">DOI: 10.4018/IJWP.2019070101</div>
+    <div class="year">2019</div>
+</div>
+
+<div class="journal-item" data-year="2019">
+    <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0,5&cluster=963118106340355935" class="size_increase">Analysis of Heterogeneous Device Characteristics in Round Robin Based Load Balancing Algorithm with Closest Data Center as Service Broker Policy in Cloud</a>
+    <div class="authors">
+        Kumar P.J., Sivakumar N., Prabhu J., Ramesh P.S., Suganya P.
+    </div>
+    <div class="publication">
+        International Journal of Innovative Technology and Exploring Engineering, Vol:8, Issue: 9, Pg.No(1627-1630)
+    </div>
+    <div class="year">2019</div>
+</div>
+
+<div class="journal-item" data-year="2019">
+    <a href="#" class="size_increase">An Analysis of Security Issues in Cloud Computing</a>
+    <div class="authors">
+        Malar M.B.B.A., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal of Civil Engineering and Technology, Vol:10, Issue: 2, Pg.No(2138-2153)
+    </div>
+    <div class="year">2019</div>
+</div>
+
+<div class="journal-item" data-year="2019">
+    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=6-4F8SsAAAAJ&cstart=80&sortby=pubdate&citation_for_view=6-4F8SsAAAAJ:aqlVkmm33-oC" class="size_increase">An Analysis on ECSE Load Balancing Algorithm with CDC as a Service Broker Policy in Cloud with Heterogeneous Communication and Device Characteristics</a>
+    <div class="authors">
+        Kumar P.J., Prabhu J., Sivakumar N., Ramesh P.S., Suganya P.
+    </div>
+    <div class="publication">
+        International Journal of Innovative Technology and Exploring Engineering, Vol:8, Issue: 9, Pg.No(1631-1635)
+    </div>
+    <div class="year">2019</div>
+</div>
+
+<div class="journal-item" data-year="2019">
+    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=6-4F8SsAAAAJ&cstart=80&sortby=pubdate&citation_for_view=6-4F8SsAAAAJ:Wp0gIr-vW9MC" class="size_increase">Secured Service Chains Tuned Resource Sharing Using NSDP</a>
+    <div class="authors">
+        Vijayanand R., Prabhu J., Muthamilselvan T., Thanapal P., Manivannan S.S.
+    </div>
+    <div class="publication">
+        International Journal of Innovative Technology and Exploring Engineering, Vol:8, Issue: 10, Pg.No(2195-2198)
+    </div>
+    <div class="doi">DOI: 10.35940/ijitee.J9410.0881019</div>
+    <div class="year">2019</div>
+</div>
+
+<!----2018-->
+<!-- 2018 Journals -->
+<div class="journal-item" data-year="2018">
+    <a href="http://op.niscpr.res.in/index.php/ALIS/article/view/21598/0" class="size_increase">Role of Sentiment Classification in Sentiment Analysis: A Survey</a>
+    <div class="authors">
+        Pavan Kumar M.R., Prabhu J.
+    </div>
+    <div class="publication">
+        Annals of Library and Information Studies, Vol:65, Issue: 3, Pg.No(196-209)
+    </div>
+    <div class="year">2018</div>
+</div>
+
+<div class="journal-item" data-year="2018">
+    <a href="#" class="size_increase">Self Service Software</a>
+    <div class="authors">
+        Vijay Anand R., Prabhu J., Jayalakshmi P.
+    </div>
+    <div class="publication">
+        Journal of Advanced Research in Dynamical and Control Systems, Vol:10, Pg.No(1659-1666)
+    </div>
+    <div class="year">2018</div>
+</div>
+
+<div class="journal-item" data-year="2018">
+    <a href="#" class="size_increase">Research and Development of Virtualization in Wireless Sensor Networks</a>
+    <div class="authors">
+        Sandeep Kumar M., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal on Informatics Visualization, Vol:2, Issue: 2, Pg.No(96-103)
+    </div>
+    <div class="doi">DOI: 10.30630/joiv.2.2.118</div>
+    <div class="year">2018</div>
+</div>
+
+<div class="journal-item" data-year="2018">
+    <a href="#" class="size_increase">Comparison of Multi-Criteria Recommendation System for Improving Accurate Prediction</a>
+    <div class="authors">
+        Sandeepkumar M., Prabhu J.
+    </div>
+    <div class="publication">
+        Journal of Advanced Research in Dynamical and Control Systems, Vol:10, Pg.No(1535-1542)
+    </div>
+    <div class="year">2018</div>
+</div>
+
+<div class="journal-item" data-year="2018">
+    <a href="#" class="size_increase">Comparison of NoSQL Database and Traditional Database - An Emphatic Analysis</a>
+    <div class="authors">
+        Sandeep Kumar M., Prabhu J.
+    </div>
+    <div class="publication">
+        International Journal on Informatics Visualization, Vol:2, Issue: 2, Pg.No(51-55)
+    </div>
+    <div class="doi">DOI: 10.30630/joiv.2.2.58</div>
+    <div class="year">2018</div>
+</div>
+                        </div>
+                        <!-- etc... -->
+                    
+                </div>
+
+                
+
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+    const years = ['2024', '2023', '2022', '2021', '2020', '2019', '2018'];
+    
+    years.forEach(year => {
+        const items = document.querySelectorAll(`.journal-item[data-year="${year}"]`);
+        
+        if (items.length > 6) {
+            // Hide items beyond the first 6
+            items.forEach((item, index) => {
+                if (index >= 6) {
+                    item.classList.add('journals-hidden');
+                }
+            });
+
+            // Create container for both buttons
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'journals-read-more-container';
+            buttonContainer.dataset.year = year;
+            
+            // Create Read More button
+            const readMoreBtn = document.createElement('button');
+            readMoreBtn.className = 'journals-read-more-btn';
+            readMoreBtn.textContent = 'Read More';
+            
+            // Create Read Less button (initially hidden)
+            const readLessBtn = document.createElement('button');
+            readLessBtn.className = 'journals-read-less-btn';
+            readLessBtn.textContent = 'Read Less';
+            readLessBtn.style.display = 'none';
+            
+            // Add both buttons to container
+            buttonContainer.appendChild(readMoreBtn);
+            buttonContainer.appendChild(readLessBtn);
+            
+            // Add container after the last item
+            items[items.length - 1].insertAdjacentElement('afterend', buttonContainer);
+        }
+    });
+
+    // Event handler for both buttons
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('journals-read-more-btn')) {
+            const container = e.target.parentElement;
+            const year = container.dataset.year;
+            const hiddenItems = document.querySelectorAll(`.journal-item[data-year="${year}"].journals-hidden`);
+            
+            // Show hidden items
+            hiddenItems.forEach(item => item.classList.remove('journals-hidden'));
+            
+            // Toggle buttons
+            e.target.style.display = 'none';
+            container.querySelector('.journals-read-less-btn').style.display = 'inline-block';
+        }
+        
+        if (e.target.classList.contains('journals-read-less-btn')) {
+            const container = e.target.parentElement;
+            const year = container.dataset.year;
+            const items = document.querySelectorAll(`.journal-item[data-year="${year}"]`);
+            
+            // Hide items beyond the first 6
+            items.forEach((item, index) => {
+                if (index >= 6) {
+                    item.classList.add('journals-hidden');
+                }
+            });
+            
+            // Toggle buttons
+            e.target.style.display = 'none';
+            container.querySelector('.journals-read-more-btn').style.display = 'inline-block';
+            
+            // Scroll back to the start of the year's section
+            items[0].scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+function filterJournals(year) {
+    // Update active button
+    document.querySelectorAll('.year-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase() === year || (year === 'all' && btn.textContent === 'All')) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Filter journals
+    const allItems = document.querySelectorAll('.journal-item');
+    const readMoreBtns = document.querySelectorAll('.journals-read-more-container');
+
+    allItems.forEach((item, index) => {
+        const itemYear = item.dataset.year;
+        const sameYearItems = document.querySelectorAll(`.journal-item[data-year="${itemYear}"]`);
+        const itemIndex = Array.from(sameYearItems).indexOf(item);
+
+        if (year === 'all' || itemYear === year) {
+            if (itemIndex < 6) {
+                item.classList.remove('journals-hidden');
+            } else {
+                item.classList.add('journals-hidden');
+            }
+        } else {
+            item.classList.add('journals-hidden');
+        }
+    });
+
+    // Display or hide "Read More" buttons based on year filter
+    readMoreBtns.forEach(btn => {
+        if (year === 'all' || btn.dataset.year === year) {
+            btn.style.display = 'block';
+        } else {
+            btn.style.display = 'none';
+        }
+    });
+}
+
+                
+                </script>
+
+                <div class="section-title" id="books"><h1>Books Published</h1></div>
+                <div class="section-content" style="display:grid;
+                grid-template-columns: 1fr 2fr;
+                grid-row-gap:-40px;
+                justify-content: start;
+                align-content:end;">
+                    <img src="./book.jpg" height="300" width="200">
+                    <p ><strong >GUI Testing: </strong>The event handler's latency for GUI application is increased so testers have to spend more money on that to minimize delay to count the responsiveness of the GUI application. Forced by work on prioritization algorithm for test case generation, the fully automatic model based GUI testing resulted in the effective ordering of the test cases The infeasible problems of test cases and their ripping methods for constructing Event Flow Graph might miss some of the paths since they are not reachable at some state but available at another state and so not optimized. GUI Testing can be performed both manually with a human tester or could be performed automatically with use of a software program. Finding errors when the test suite ran at night, and telling testers in the morning, because we have some known problems.</p>
+
+                    <img src="./book2.jpg" height="300" width="200" style="padding-top: 40px;">
+                    <p style="padding-top: 40px;"><strong>Swarm Optimization for Biomedical Applications: </strong>delves into the rapidly expanding field of biomedical engineering and its role in addressing biological and medical challenges to enhance healthcare. It highlights the use of applications like protein structure prediction, computer-aided drug design, and diagnostic tools based on image and signal data for cost-effective, accurate healthcare solutions. With advancements in machine learning (ML) and deep learning (DL), the book underscores their integration in creating intelligent real-time decision-making systems, while acknowledging challenges with data accuracy and reliability. It explores how optimization techniques, especially swarm intelligence—modeled after the collective behavior of ants, bees, and birds—can effectively refine ML/DL models to improve their performance in biomedical research. The book ultimately aims to demonstrate the application of such optimization strategies in developing sophisticated ML/DL models for enhanced biomedical solutions.</p>        
+                </div>
+               
+          
+    
+            
+            
+                <div class="section-title" id="memberships"><h1>Memberships in Professional Bodies</h1></div>
+                <div class="section-content">
+                    <ul>
+                        <li>Annual member in The indian Science congress Association, Kolkata, India Membership No:A3445</li>
+                        <li>Member in International Association of Computer Science and Information Technology (IACSIT) 2010 Member NO:80336920.</li>
+                        <li>Member in International Association of Engineers(IAENG) 14th April 2020 Member NO:148523</li>
+                        <li>Member in All india council for Technical skill development January 2023, Member NO:75528</li>
+                        <li>Member in Computer Science teacher Association January 2023, Member NO:5099</li>
+                    </ul>
+                </div>
+            
+
+          
+                <div class="section-title" id="certification"><h1>Certification</h1></div>
+
+                <div class="section-content">
+                    <ul>
+                        <li><a href="https://www.coursera.org/account/accomplishments/verify/7CN229ZE57GW" class="size_increase">Software Processes and Agile Practices</a><br>
+                            University of Alberta<br>              
+                            2020<br></li>
+
+                            <li><a href="https://www.coursera.org/account/accomplishments/verify/9PZC28EL3W4F" class="size_increase">Neural Networks and Deep Learning</a><br>
+                                DeepLearning.AI<br>
+                                2020<br></li>
+                            
+                            <li><a href="https://www.coursera.org/account/accomplishments/verify/87Q7RH3X8MTN" class="size_increase">Machine Learning</a><br>
+                                Stanford online<br>
+                                2020<br></li>
+                            
+                            <li><a href="https://www.coursera.org/account/accomplishments/verify/DT36LJ6XNXEH" class="size_increase">Programming for Everybody (Getting Started with Python)</a><br>
+                                University of Michigan<br>
+                                2017<br></li>
+                             
+                            <li><a href="https://www.coursera.org/account/accomplishments/verify/G5YSR5MBCM97" class="size_increase">Introduction to Artificial Intelligence (AI)</a><br>
+                                IBM<br>
+                                2023<br></li>
+                               
+                                <li><a href="https://www.coursera.org/account/accomplishments/verify/JYQL6BEUEBHV" class="size_increase">MOOC: How to make a MOOC?</a><br>
+                                    Novosibirsk State University (NSU)<br>
+                                    2020<br></li>
+
+                                    <li><a href="https://www.coursera.org/account/accomplishments/verify/KPNUPJU3VZCA" class="size_increase">COVID-19 Contact Tracing</a><br>
+                                        Johns Hopkins University<br>
+                                        2020<br></li>
+               
+                                        <li><a href="https://www.coursera.org/account/accomplishments/verify/KPNUPJU3VZCA" class="size_increase">Object-Oriented Design</a><br>
+                                            University of Alberta<br>
+                                            2019<br></li>
+                           
+                                            <li><a href="https://www.coursera.org/account/accomplishments/verify/TL3CTKBMWC4S" class="size_increase">Agile Software Development</a><br>
+                                                University of Minnesota<br>
+                                                2022<br></li>
+                                            </ul>
+                                            
+                                        </div>
+                                    </div>
+                                </body>
+                                
+                            </body>
+                            
+                            
+                            </html>
